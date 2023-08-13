@@ -10,6 +10,8 @@ def normal_binary_search(val, arr, left_ptr, right_ptr):
     2
     >>> normal_binary_search(4, [1,2,3,33, 44], 0, 4)
     -1
+    >>> normal_binary_search(4, [], 0, 0)
+    -1
     """
     while left_ptr < right_ptr:
         middle_ptr = (left_ptr + right_ptr) // 2
@@ -25,10 +27,47 @@ def normal_binary_search(val, arr, left_ptr, right_ptr):
 
 
 def lb_binary_search(val, arr, left_ptr, right_ptr):
-    # TODO : add this
-    pass
+    """
+        Lower bound binary search
+
+    >>> lb_binary_search(2, [1,2,2,2, 3,33], 0, 5)
+    1
+
+
+    >>> lb_binary_search(2, [], 0, 0)
+    0
+    """
+    while left_ptr < right_ptr:
+        middle_ptr = (left_ptr + right_ptr) // 2
+
+        if arr[middle_ptr] < val:
+            left_ptr = middle_ptr + 1
+        else:
+            right_ptr = middle_ptr
+
+    return left_ptr
 
 
 def ub_binary_search(val, arr, left_ptr, right_ptr):
-    # TODO : add this
-    pass
+    """
+        Upper bound binary search
+
+    >>> ub_binary_search(2, [1,2,2,2, 3,33], 0, 5)
+    4
+
+
+    >>> ub_binary_search(2, [], 0, 0)
+    0
+
+    >>> ub_binary_search(2, [2], 0, 1)
+    1
+    """
+    while left_ptr < right_ptr:
+        middle_ptr = (left_ptr + right_ptr) // 2
+
+        if arr[middle_ptr] <= val:
+            left_ptr = middle_ptr + 1
+        else:
+            right_ptr = middle_ptr
+
+    return left_ptr
